@@ -286,17 +286,38 @@ def welcome_screen():
     st.markdown(
         """
         <style>
-        .stAnimation {
-            animation: float 6s ease-in-out infinite;
+        .solar-system {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 50px;
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .planet {
+            text-align: center;
+        }
+        .planet img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .sun img {
+            width: 100px;
+            height: 100px;
         }
         </style>
-        <div class="stAnimation">
-            <h1 style="text-align: center; font-size: 5em;">🌎 🌓 🪐</h1>
+        <div class="solar-system">
+            <div class="planet sun"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/640px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg" alt="Sun"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Mercury_in_color_-_Prockter07_centered.jpg/640px-Mercury_in_color_-_Prockter07_centered.jpg" alt="Mercury"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/640px-Venus-real_color.jpg" alt="Venus"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/640px-The_Earth_seen_from_Apollo_17.jpg" alt="Earth"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/640px-OSIRIS_Mars_true_color.jpg" alt="Mars"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/640px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg" alt="Jupiter"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/640px-Saturn_during_Equinox.jpg" alt="Saturn"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/640px-Uranus2.jpg" alt="Uranus"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/640px-Neptune_Full.jpg" alt="Neptune"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pluto_in_True_Color_-_High-Res.jpg/640px-Pluto_in_True_Color_-_High-Res.jpg" alt="Pluto"></div>
+            <div class="planet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/640px-FullMoon2010.jpg" alt="Moon"></div>
         </div>
         """,
         unsafe_allow_html=True
