@@ -254,3 +254,40 @@ with st.sidebar:
     if st.button("Did You Know? 🌠", use_container_width=True):
         st.session_state.page = "Did You Know"
         st.rerun()
+
+def run_chat():
+    st.title("💬 Space Chat")
+    st.write("Chat with our AI about space and astronomy!")
+
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    if prompt := st.chat_input("Ask me anything about space!"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+        with st.chat_message("assistant"):
+            message_placeholder = st.empty()
+            full_response = ""
+            for response in client.chat.completions.create(
+                model="llama-3.1-70b-versatile",
+                messages=[
+                    {"role": "system", "content": "You are a knowledgeable assistant specializing in space and astronomy. Provide accurate and engaging information about space-related topics."},
+                    *[
+                        {"role": m["role"], "content": m["content"]}
+                        for m in st.session_state.messages
+                    ],
+                ],
+                stream=True,
+            ):
+                full_response += (response.choices[0].delta.content or "")
+                message_placeholder.markdown(full_response + "▌")
+            message_placeholder.markdown(full_response)
+        st.session_state.messages.append({"role": "assistant", "content": full_response})
+
+# ... (keep the existing leaderboard functions)
