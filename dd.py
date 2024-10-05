@@ -17,7 +17,7 @@ try:
 # groq_api_key = config['GROQ_API_KEY']
 
 # With this:
-groq_api_key = st.secrets["GROQ_API_KEY"]
+    groq_api_key = st.secrets["GROQ_API_KEY"]
 
 if not groq_api_key:
     st.error("GROQ_API_KEY not found in Streamlit secrets. Please make sure it's correctly set in the app settings.")
