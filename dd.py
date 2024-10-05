@@ -11,9 +11,18 @@ st.set_page_config(page_title="Space Pe Charcha", page_icon="🚀", layout="wide
 
 # Read the API key from the JSON file
 try:
-    with open('config.json') as config_file:
-        config = json.load(config_file)
-        groq_api_key = config.get('GROQ_API_KEY')
+    # Replace this:
+# with open('config.json') as config_file:
+#     config = json.load(config_file)
+# groq_api_key = config['GROQ_API_KEY']
+
+# With this:
+groq_api_key = st.secrets["GROQ_API_KEY"]
+
+if not groq_api_key:
+    st.error("GROQ_API_KEY not found in Streamlit secrets. Please make sure it's correctly set in the app settings.")
+    st.stop()
+
 except FileNotFoundError:
     st.error("config.json file not found. Please make sure it exists in the same directory as this script.")
     st.stop()
